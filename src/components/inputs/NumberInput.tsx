@@ -61,10 +61,10 @@ const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <Input
       type="number"
+      placeholder={p ?? d?.toString()}
       min={min}
       max={max}
       step={1}
-      placeholder={p ?? d?.toString()}
       value={value}
       onChange={handleChange}
       invalid={invalid}

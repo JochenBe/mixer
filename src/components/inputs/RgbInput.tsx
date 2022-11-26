@@ -4,9 +4,9 @@ import NumberInput from "components/inputs/NumberInput";
 
 import Color from "types/Color";
 
-const min = 0;
-const max = 255;
-const d = min;
+const min: number = 0;
+const max: number = 255;
+const d: number = min;
 
 type RgbInputProps = {
   value: Color;
