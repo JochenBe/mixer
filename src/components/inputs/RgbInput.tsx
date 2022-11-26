@@ -8,12 +8,12 @@ const min = 0;
 const max = 255;
 const d = min;
 
-type RgbPickerProps = {
+type RgbInputProps = {
   value: Color;
   onChange: (color: Color) => void;
 };
 
-const RgbPicker: React.FC<RgbPickerProps> = ({ value, onChange }) => (
+const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
   <>
     <NumberInput
       min={min}
@@ -54,4 +54,4 @@ const RgbPicker: React.FC<RgbPickerProps> = ({ value, onChange }) => (
   </>
 );
 
-export default RgbPicker;
+export default RgbInput;

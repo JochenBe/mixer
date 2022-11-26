@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import RgbPicker from "components/pickers/RgbPicker";
+import RgbInput from "components/inputs/RgbInput";
 import ColorPreview from "components/ColorPreview";
 
 import Color from "types/Color";
@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <ColorPreview color={color}>
-      <RgbPicker value={color} onChange={setColor} />
+      <RgbInput value={color} onChange={setColor} />
     </ColorPreview>
   );
 };
