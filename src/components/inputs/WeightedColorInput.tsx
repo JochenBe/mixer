@@ -32,7 +32,7 @@ const RemoveButton = styled.button`
   transition: opacity 0.125s ease;
 `;
 
-const StyledColorInput = styled.div`
+const StyledWeightedColorInput = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -49,6 +49,10 @@ const StyledColorInput = styled.div`
 
   & ${Input}, & button {
     font-family: ${({ theme }) => theme.fontMonospace};
+  }
+
+  & input[type="number"] {
+    width: 6ch;
   }
 `;
 
@@ -97,7 +101,7 @@ const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
   onRemove,
   ...props
 }) => (
-  <StyledColorInput {...props}>
+  <StyledWeightedColorInput {...props}>
     {onRemove ? <RemoveButton onClick={onRemove}>×</RemoveButton> : null}
     <Row>
       <ColorInput
@@ -131,7 +135,7 @@ const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
         }}
       />
     </WeightRow>
-  </StyledColorInput>
+  </StyledWeightedColorInput>
 );
 
 export default WeightedColorInput;
