@@ -10,11 +10,7 @@ type ColorPreviewProps = {
 const ColorPreview: React.FC<
   React.PropsWithChildren<ColorPreviewProps>
 > = styled.div<ColorPreviewProps>`
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  flex: 1;
 
   background-color: ${({ color }) => colorToRgb(color)};
 `;

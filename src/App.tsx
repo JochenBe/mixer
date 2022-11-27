@@ -1,19 +1,29 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 import ColorPreview from "components/ColorPreview";
-import RgbInput from "components/inputs/RgbInput";
-import HexInput from "components/inputs/HexInput";
+import Colors from "components/Colors";
 
 import Color from "types/Color";
 
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+`;
+
 const App: React.FC = () => {
-  const [color, setColor] = useState<Color>({ red: 0, green: 0, blue: 0 });
+  const [colors, setColors] = useState<Color[]>([
+    { red: 0, green: 0, blue: 0 },
+  ]);
 
   return (
-    <ColorPreview color={color}>
-      <RgbInput value={color} onChange={setColor} />
-      <HexInput value={color} onChange={setColor} />
-    </ColorPreview>
+    <StyledApp>
+      <ColorPreview color={colors[0]} />
+      <Colors value={colors} onChange={setColors} />
+    </StyledApp>
   );
 };
 
