@@ -3,6 +3,8 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     red: string;
+    dark: string;
+    light: string;
 
     foreground: string;
     foregroundSecondary: string;

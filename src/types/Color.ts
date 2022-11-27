@@ -11,6 +11,9 @@ export const equals = (color1: Color, color2: Color) =>
   color1.green === color2.green &&
   color1.blue === color2.blue;
 
+export const isDark = (color: Color) =>
+  (color.red + color.green + color.blue) / 3 <= 127;
+
 export const colorToRgb = (color: Color): string =>
   `rgb(${color.red}, ${color.green}, ${color.blue})`;
 
