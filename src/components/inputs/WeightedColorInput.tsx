@@ -37,7 +37,6 @@ const StyledWeightedColorInput = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 0.5em;
   padding: 0.25em;
   width: min-content;
   border-radius: 1em;

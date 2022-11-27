@@ -9,8 +9,9 @@ import Weighted from "types/Weighted";
 const StyledColors = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 1em;
 
-  padding: 0.5em;
+  padding: 1em;
   width: 100vw;
   background-color: ${({ theme }) => theme.background};
 
@@ -23,7 +24,6 @@ const StyledColors = styled.div`
 `;
 
 const AddButton = styled.button`
-  margin: 0.25em;
   padding: 0.125em 3em;
   border: none;
   border-radius: 0.5em;
