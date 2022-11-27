@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <StyledApp>
-      <ColorPreview color={calculateWeightedColor(colors)} showValues />
+      <ColorPreview color={calculateWeightedColor(colors)} />
       <WeightedColors value={colors} onChange={setColors} />
     </StyledApp>
   );

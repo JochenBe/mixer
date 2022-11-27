@@ -5,50 +5,32 @@ import Color, { isDark, colorToRgb, colorToHex } from "types/Color";
 
 type StyledColorPreviewProps = {
   $color: Color;
+  $dark: boolean;
 };
 
 const StyledColorPreview = styled.div<StyledColorPreviewProps>`
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: ${({ $color }) => colorToRgb($color)};
-`;
-
-type ValuesProps = {
-  $dark: boolean;
-};
-
-const Values = styled.div<ValuesProps>`
-  display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-
   gap: 0.5em;
 
-  color: ${({ $dark, theme }) => ($dark ? theme.dark : theme.light)};
+  background-color: ${({ $color }) => colorToRgb($color)};
+
   font-size: 4em;
   font-family: ${({ theme }) => theme.fontMonospace};
+  color: ${({ $dark, theme }) => ($dark ? theme.dark : theme.light)};
 `;
 
 type ColorPreviewProps = {
   color: Color;
-  showValues?: boolean | undefined;
 };
 
-const ColorPreview: React.FC<ColorPreviewProps> = ({
-  color,
-  showValues,
-  ...props
-}) => (
-  <StyledColorPreview $color={color} {...props}>
-    {showValues ? (
-      <Values $dark={!isDark(color)}>
-        <p>{colorToHex(color)}</p>
-        <p>{colorToRgb(color)}</p>
-      </Values>
-    ) : null}
+const ColorPreview: React.FC<ColorPreviewProps> = ({ color, ...props }) => (
+  <StyledColorPreview $color={color} $dark={!isDark(color)} {...props}>
+    <p>{colorToHex(color)}</p>
+    <p>{colorToRgb(color)}</p>
   </StyledColorPreview>
 );
 

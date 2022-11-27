@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import ColorPreview from "components/ColorPreview";
+import ColorInput from "./ColorInput";
 import RgbInput from "./RgbInput";
 import HexInput from "./HexInput";
 import WeightInput from "./WeightInput";
@@ -61,12 +61,6 @@ const Row = styled.div`
   }
 `;
 
-const StyledColorPreview = styled(ColorPreview)`
-  margin: 0.25em;
-  height: 1.875em;
-  border-radius: 0.5em;
-`;
-
 const WeightRow = styled(Row)`
   & > ${Button}:not(:first-child),
   & > ${Input}:not(:first-child) {
@@ -106,7 +100,12 @@ const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
   <StyledColorInput {...props}>
     {onRemove ? <RemoveButton onClick={onRemove}>×</RemoveButton> : null}
     <Row>
-      <StyledColorPreview color={value} />
+      <ColorInput
+        value={value}
+        onChange={(color) => {
+          onChange({ ...value, ...color });
+        }}
+      />
     </Row>
     <Row>
       <RgbInput
