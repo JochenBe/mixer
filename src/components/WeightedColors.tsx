@@ -13,6 +13,8 @@ const StyledColors = styled.div`
   padding: 0.5em;
   width: 100vw;
   background-color: ${({ theme }) => theme.background};
+
+  overflow-x: auto;
 `;
 
 const AddButton = styled.button`
@@ -53,6 +55,15 @@ const WeightedColors: React.FC<WeightedColorsProps> = ({
           newValue[index] = color;
           onChange(newValue);
         }}
+        onRemove={
+          value.length > 1
+            ? () => {
+                const newValue = [...value];
+                newValue.splice(index, 1);
+                onChange(newValue);
+              }
+            : undefined
+        }
       />
     ))}
     <AddButton

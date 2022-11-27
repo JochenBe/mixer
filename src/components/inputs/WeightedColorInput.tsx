@@ -11,7 +11,27 @@ import Input from "./Input";
 import Color from "types/Color";
 import Weighted from "types/Weighted";
 
+const RemoveButton = styled.button`
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+
+  width: 1.25em;
+  height: 1.25em;
+  border: none;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.foreground};
+
+  font-size: 1em;
+  color: ${({ theme }) => theme.background};
+
+  cursor: pointer;
+
+  opacity: 0;
+`;
+
 const StyledColorInput = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -20,6 +40,10 @@ const StyledColorInput = styled.div`
   width: min-content;
   border-radius: 0.5em;
   background-color: ${({ theme }) => theme.backgroundSecondary};
+
+  &:hover ${RemoveButton} {
+    opacity: 1;
+  }
 `;
 
 const Row = styled.div`
@@ -64,14 +88,17 @@ const WeightRow = styled(Row)`
 type WeightedColorInputProps = {
   value: Weighted<Color>;
   onChange: (color: Weighted<Color>) => void;
+  onRemove?: (() => void) | undefined;
 };
 
 const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
   value,
   onChange,
+  onRemove,
   ...props
 }) => (
   <StyledColorInput {...props}>
+    {onRemove ? <RemoveButton onClick={onRemove}>×</RemoveButton> : null}
     <Row>
       <StyledColorPreview $color={value} />
     </Row>
