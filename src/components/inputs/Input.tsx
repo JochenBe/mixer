@@ -7,13 +7,16 @@ type InputProps = {
 const Input = styled.input<InputProps>`
   margin: 0.25em;
   padding: 0.25em 0.5em;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   border: solid 0.125em
-    ${({ $invalid, theme }) => ($invalid ? "red" : theme.foregroundTertiary)};
+    ${({ $invalid, theme }) =>
+      $invalid ? theme.red : theme.foregroundTertiary};
   background-color: ${({ theme }) => theme.backgroundTertiary};
 
   font-size: 1em;
   color: ${({ theme }) => theme.foreground};
+
+  transition: border-color 0.125s ease;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -28,7 +31,7 @@ const Input = styled.input<InputProps>`
   &:focus {
     outline: none;
     border-color: ${({ $invalid, theme }) =>
-      $invalid ? "red" : theme.foregroundSecondary};
+      $invalid ? theme.red : theme.foregroundSecondary};
   }
 
   &::placeholder {

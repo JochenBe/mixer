@@ -13,8 +13,8 @@ import Weighted from "types/Weighted";
 
 const RemoveButton = styled.button`
   position: absolute;
-  top: -0.5em;
-  right: -0.5em;
+  top: -0.25em;
+  right: -0.25em;
 
   width: 1.25em;
   height: 1.25em;
@@ -28,6 +28,8 @@ const RemoveButton = styled.button`
   cursor: pointer;
 
   opacity: 0;
+
+  transition: opacity 0.125s ease;
 `;
 
 const StyledColorInput = styled.div`
@@ -38,7 +40,7 @@ const StyledColorInput = styled.div`
   margin: 0.5em;
   padding: 0.25em;
   width: min-content;
-  border-radius: 0.5em;
+  border-radius: 1em;
   background-color: ${({ theme }) => theme.backgroundSecondary};
 
   &:hover ${RemoveButton} {
@@ -62,7 +64,7 @@ const Row = styled.div`
 const StyledColorPreview = styled(ColorPreview)`
   margin: 0.25em;
   height: 1.875em;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
 `;
 
 const WeightRow = styled(Row)`

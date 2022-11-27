@@ -21,12 +21,14 @@ const AddButton = styled.button`
   margin: 0.25em;
   padding: 0.125em 4em;
   border: none;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   background-color: ${({ theme }) => theme.backgroundSecondary};
 
   font-size: 2em;
   font-weight: 300;
   color: ${({ theme }) => theme.foregroundSecondary};
+
+  transition: color 0.125s ease;
 
   cursor: pointer;
 
