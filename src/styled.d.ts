@@ -11,5 +11,7 @@ declare module "styled-components" {
     background: string;
     backgroundSecondary: string;
     backgroundTertiary: string;
+
+    fontMonospace: string;
   }
 }

@@ -44,6 +44,10 @@ const StyledColorInput = styled.div`
   &:hover ${RemoveButton} {
     opacity: 1;
   }
+
+  & ${Input}, & button {
+    font-family: ${({ theme }) => theme.fontMonospace};
+  }
 `;
 
 const Row = styled.div`

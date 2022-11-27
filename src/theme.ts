@@ -10,6 +10,9 @@ const theme: DefaultTheme = {
   background: "rgb(15, 15, 15)",
   backgroundSecondary: "rgb(23, 23, 23)",
   backgroundTertiary: "rgb(31, 31, 31)",
+
+  fontMonospace:
+    'source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace',
 };
 
 export default theme;

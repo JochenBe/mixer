@@ -57,10 +57,12 @@ export const calculateWeightedColor = (colors: Weighted<Color>[]): Color => {
     { red: 0, green: 0, blue: 0, weight: 0 }
   );
 
+  const weight = Math.max(color.weight, 1);
+
   return {
-    red: Math.floor(color.red / color.weight),
-    green: Math.floor(color.green / color.weight),
-    blue: Math.floor(color.blue / color.weight),
+    red: Math.floor(color.red / weight),
+    green: Math.floor(color.green / weight),
+    blue: Math.floor(color.blue / weight),
   };
 };
 

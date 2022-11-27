@@ -25,8 +25,7 @@ const Values = styled.div`
 
   color: white;
   font-size: 4em;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: ${({ theme }) => theme.fontMonospace};
 `;
 
 type ColorPreviewProps = {
