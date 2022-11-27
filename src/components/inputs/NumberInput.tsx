@@ -44,7 +44,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
       return;
     }
 
-    let newV = parseInt(value);
+    let newV = parseInt(value, 10);
 
     if (isNaN(newV)) {
       setInvalid(true);

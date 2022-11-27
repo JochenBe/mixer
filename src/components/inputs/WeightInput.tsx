@@ -15,9 +15,9 @@ type WeightInputProps = {
 
 const WeightInput: React.FC<WeightInputProps> = ({ value, onChange }) => {
   useEffect(() => {
-    if (value >= 0) return;
+    if (value >= 0 && value <= 255 && value % 1 === 0) return;
 
-    onChange(0);
+    onChange(Math.round(Math.min(Math.max(0, value), 255)));
   }, [value, onChange]);
 
   return (
@@ -38,6 +38,7 @@ const WeightInput: React.FC<WeightInputProps> = ({ value, onChange }) => {
       </Button>
       <StyledNumberInput
         min={0}
+        max={255}
         default={1}
         value={value}
         onChange={onChange}

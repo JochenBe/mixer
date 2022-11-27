@@ -100,7 +100,7 @@ const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
   <StyledColorInput {...props}>
     {onRemove ? <RemoveButton onClick={onRemove}>×</RemoveButton> : null}
     <Row>
-      <StyledColorPreview $color={value} />
+      <StyledColorPreview color={value} />
     </Row>
     <Row>
       <RgbInput
