@@ -11,11 +11,15 @@ const StyledColors = styled.div`
   flex-direction: row;
 
   padding: 0.5em;
-  padding-right: 1em;
   width: 100vw;
   background-color: ${({ theme }) => theme.background};
 
   overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const AddButton = styled.button`
