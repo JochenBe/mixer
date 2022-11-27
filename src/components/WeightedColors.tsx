@@ -33,8 +33,13 @@ const AddButton = styled.button`
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.foreground};
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
