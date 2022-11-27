@@ -37,8 +37,12 @@ type ColorPreviewProps = {
   showValues?: boolean | undefined;
 };
 
-const ColorPreview: React.FC<ColorPreviewProps> = ({ color, showValues }) => (
-  <StyledColorPreview $color={color}>
+const ColorPreview: React.FC<ColorPreviewProps> = ({
+  color,
+  showValues,
+  ...props
+}) => (
+  <StyledColorPreview $color={color} {...props}>
     {showValues ? (
       <Values $dark={!isDark(color)}>
         <p>{colorToHex(color)}</p>
