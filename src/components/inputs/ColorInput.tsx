@@ -20,7 +20,8 @@ const StyledColorInput = styled.input`
     padding: 0;
   }
 
-  &::-webkit-color-swatch {
+  &::-webkit-color-swatch,
+  &::-moz-color-swatch {
     border: none;
   }
 `;
