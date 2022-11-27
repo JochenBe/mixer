@@ -11,6 +11,7 @@ const StyledColors = styled.div`
   flex-direction: row;
 
   padding: 0.5em;
+  padding-right: 1em;
   width: 100vw;
   background-color: ${({ theme }) => theme.background};
 
