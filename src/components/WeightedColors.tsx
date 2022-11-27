@@ -20,7 +20,7 @@ const StyledColors = styled.div`
 
 const AddButton = styled.button`
   margin: 0.25em;
-  padding: 0.125em 4em;
+  padding: 0.125em 3em;
   border: none;
   border-radius: 0.5em;
   background-color: ${({ theme }) => theme.backgroundSecondary};

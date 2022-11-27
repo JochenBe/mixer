@@ -27,6 +27,11 @@ const StyledColorInput = styled.input`
   &::-moz-color-swatch {
     border: none;
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.125em ${({ theme }) => theme.foregroundSecondary};
+  }
 `;
 
 type ColorInputProps = {
