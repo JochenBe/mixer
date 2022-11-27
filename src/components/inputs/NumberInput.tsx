@@ -66,6 +66,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
       min={min}
       max={max}
       step={1}
+      pattern="\d*"
       value={value}
       onChange={handleChange}
       $invalid={invalid}

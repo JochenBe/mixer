@@ -18,7 +18,7 @@ const StyledColorPreview = styled.div<StyledColorPreviewProps>`
 
   background-color: ${({ $color }) => colorToRgb($color)};
 
-  font-size: 4em;
+  font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
   color: ${({ $dark, theme }) => ($dark ? theme.dark : theme.light)};
 `;
