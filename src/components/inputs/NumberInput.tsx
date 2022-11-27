@@ -18,6 +18,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
   default: d,
   value: v,
   onChange: oc,
+  ...props
 }) => {
   const [invalid, setInvalid] = useState<boolean>(false);
   const [value, setValue] = useState<string>(v.toString());
@@ -68,6 +69,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
       value={value}
       onChange={handleChange}
       $invalid={invalid}
+      {...props}
     />
   );
 };

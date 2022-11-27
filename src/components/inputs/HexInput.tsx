@@ -15,7 +15,11 @@ type HexInputProps = {
   onChange: (color: Color) => void;
 };
 
-const HexInput: React.FC<HexInputProps> = ({ value: v, onChange: oc }) => {
+const HexInput: React.FC<HexInputProps> = ({
+  value: v,
+  onChange: oc,
+  ...props
+}) => {
   const [invalid, setInvalid] = useState<boolean>(false);
   const [value, setValue] = useState<string>(colorToHex(v));
   const previousV = useRef<Color>(v);
@@ -67,6 +71,7 @@ const HexInput: React.FC<HexInputProps> = ({ value: v, onChange: oc }) => {
       value={value}
       onChange={handleChange}
       $invalid={invalid}
+      {...props}
     />
   );
 };

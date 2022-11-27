@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import ColorInput from "./inputs/ColorInput";
+import ColorInput from "./inputs/WeightedColorInput";
 
 import Color from "types/Color";
+import Weighted from "types/Weighted";
 
 const StyledColors = styled.div`
   padding: 0.5em;
@@ -11,13 +12,17 @@ const StyledColors = styled.div`
   background-color: ${({ theme }) => theme.background};
 `;
 
-type ColorsProps = {
-  value: Color[];
-  onChange: (colors: Color[]) => void;
+type WeightedColorsProps = {
+  value: Weighted<Color>[];
+  onChange: (colors: Weighted<Color>[]) => void;
 };
 
-const Colors: React.FC<ColorsProps> = ({ value, onChange }) => (
-  <StyledColors>
+const WeightedColors: React.FC<WeightedColorsProps> = ({
+  value,
+  onChange,
+  ...props
+}) => (
+  <StyledColors {...props}>
     {value.map((color, index) => (
       <ColorInput
         key={index}
@@ -32,4 +37,4 @@ const Colors: React.FC<ColorsProps> = ({ value, onChange }) => (
   </StyledColors>
 );
 
-export default Colors;
+export default WeightedColors;
