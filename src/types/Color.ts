@@ -1,3 +1,5 @@
+import Weighted from "./Weighted";
+
 type Color = {
   red: number;
   green: number;
@@ -42,6 +44,24 @@ export const hexToColor = (hex: string): Color | undefined => {
       blue: parseInt(hex.slice(5, 7), hexRadix),
     };
   }
+};
+
+export const calculateWeightedColor = (colors: Weighted<Color>[]): Color => {
+  const color = colors.reduce(
+    (previousValue, currentValue) => ({
+      red: previousValue.red + currentValue.red * currentValue.weight,
+      green: previousValue.green + currentValue.green * currentValue.weight,
+      blue: previousValue.blue + currentValue.blue * currentValue.weight,
+      weight: previousValue.weight + currentValue.weight,
+    }),
+    { red: 0, green: 0, blue: 0, weight: 0 }
+  );
+
+  return {
+    red: color.red / color.weight,
+    green: color.green / color.weight,
+    blue: color.blue / color.weight,
+  };
 };
 
 export default Color;

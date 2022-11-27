@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ColorPreview from "components/ColorPreview";
 import WeightedColors from "components/WeightedColors";
 
-import Color from "types/Color";
+import Color, { calculateWeightedColor } from "types/Color";
 import Weighted from "types/Weighted";
 
 const StyledApp = styled.div`
@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <StyledApp>
-      <ColorPreview $color={colors[0]} />
+      <ColorPreview $color={calculateWeightedColor(colors)} />
       <WeightedColors value={colors} onChange={setColors} />
     </StyledApp>
   );

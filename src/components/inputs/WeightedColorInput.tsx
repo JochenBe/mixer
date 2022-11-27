@@ -18,8 +18,8 @@ const StyledColorInput = styled.div`
   margin: 0.5em;
   padding: 0.25em;
   width: min-content;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
   border-radius: 0.5em;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
 `;
 
 const Row = styled.div`
