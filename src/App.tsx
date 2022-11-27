@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <StyledApp>
-      <ColorPreview color={colors[0]} />
+      <ColorPreview $color={colors[0]} />
       <Colors value={colors} onChange={setColors} />
     </StyledApp>
   );

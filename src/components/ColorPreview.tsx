@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Color, { colorToRgb } from "types/Color";
 
 type ColorPreviewProps = {
-  color: Color;
+  $color: Color;
 };
 
 const ColorPreview: React.FC<
@@ -12,7 +12,7 @@ const ColorPreview: React.FC<
 > = styled.div<ColorPreviewProps>`
   flex: 1;
 
-  background-color: ${({ color }) => colorToRgb(color)};
+  background-color: ${({ $color }) => colorToRgb($color)};
 `;
 
 export default ColorPreview;

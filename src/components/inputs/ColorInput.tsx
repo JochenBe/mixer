@@ -41,7 +41,7 @@ type ColorInputProps = {
 const ColorInput: React.FC<ColorInputProps> = (props) => (
   <StyledColorInput>
     <Row>
-      <StyledColorPreview color={props.value} />
+      <StyledColorPreview $color={props.value} />
     </Row>
     <Row>
       <RgbInput {...props} />

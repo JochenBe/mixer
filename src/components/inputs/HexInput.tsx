@@ -66,7 +66,7 @@ const HexInput: React.FC<HexInputProps> = ({ value: v, onChange: oc }) => {
       pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
       value={value}
       onChange={handleChange}
-      invalid={invalid}
+      $invalid={invalid}
     />
   );
 };

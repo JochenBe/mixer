@@ -67,7 +67,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
       step={1}
       value={value}
       onChange={handleChange}
-      invalid={invalid}
+      $invalid={invalid}
     />
   );
 };

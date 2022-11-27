@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type InputProps = {
-  invalid?: boolean | undefined;
+  $invalid?: boolean | undefined;
 };
 
 const Input = styled.input<InputProps>`
@@ -9,7 +9,7 @@ const Input = styled.input<InputProps>`
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   border: solid 0.125em
-    ${({ invalid, theme }) => (invalid ? "red" : theme.foregroundTertiary)};
+    ${({ $invalid, theme }) => ($invalid ? "red" : theme.foregroundTertiary)};
   background-color: ${({ theme }) => theme.backgroundTertiary};
 
   font-size: 1em;
@@ -27,8 +27,8 @@ const Input = styled.input<InputProps>`
 
   &:focus {
     outline: none;
-    border-color: ${({ invalid, theme }) =>
-      invalid ? "red" : theme.foregroundSecondary};
+    border-color: ${({ $invalid, theme }) =>
+      $invalid ? "red" : theme.foregroundSecondary};
   }
 
   &::placeholder {
