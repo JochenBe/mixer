@@ -46,6 +46,12 @@ const StyledWeightedColorInput = styled.div`
     opacity: 1;
   }
 
+  @media (hover: none) {
+    & ${RemoveButton} {
+      opacity: 1;
+    }
+  }
+
   & ${Input}, & button {
     font-family: ${({ theme }) => theme.fontMonospace};
   }
