@@ -5,7 +5,7 @@ import Color, { isDark, colorToRgb, colorToHex } from "types/Color";
 
 type StyledColorPreviewProps = {
   $color: Color;
-  $dark: boolean;
+  $isDark: boolean;
 };
 
 const StyledColorPreview = styled.div<StyledColorPreviewProps>`
@@ -20,7 +20,7 @@ const StyledColorPreview = styled.div<StyledColorPreviewProps>`
 
   font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
-  color: ${({ $dark, theme }) => ($dark ? theme.dark : theme.light)};
+  color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
 
   @media only screen and (max-width: 56rem) {
     font-size: 2.5em;
@@ -44,7 +44,7 @@ type ColorPreviewProps = {
 };
 
 const ColorPreview: React.FC<ColorPreviewProps> = ({ color, ...props }) => (
-  <StyledColorPreview $color={color} $dark={!isDark(color)} {...props}>
+  <StyledColorPreview $color={color} $isDark={!isDark(color)} {...props}>
     <p>{colorToHex(color)}</p>
     <p>{colorToRgb(color)}</p>
   </StyledColorPreview>

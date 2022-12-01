@@ -5,6 +5,9 @@ const theme: DefaultTheme = {
   dark: "rgb(15, 15, 15)",
   light: "rgb(239, 239, 239)",
 
+  shadowDark: "rgba(15, 15, 15, 0.25)",
+  shadowLight: "rgba(239, 239, 239, 0.25)",
+
   foreground: "rgb(239, 239, 239)",
   foregroundSecondary: "rgb(63, 63, 63)",
   foregroundTertiary: "rgb(39, 39, 39)",

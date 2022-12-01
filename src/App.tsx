@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import GitHubLink from "components/GitHubLink";
 import ColorPreview from "components/ColorPreview";
 import WeightedColors from "components/WeightedColors";
 
-import Color, { calculateWeightedColor } from "types/Color";
+import Color, { isDark, calculateWeightedColor } from "types/Color";
 import Weighted from "types/Weighted";
 
 const StyledApp = styled.div`
@@ -20,9 +21,12 @@ const App: React.FC = () => {
     { red: 0, green: 0, blue: 0, weight: 1 },
   ]);
 
+  const weightedColor = calculateWeightedColor(colors);
+
   return (
     <StyledApp>
-      <ColorPreview color={calculateWeightedColor(colors)} />
+      <GitHubLink isDark={isDark(weightedColor)} />
+      <ColorPreview color={weightedColor} />
       <WeightedColors value={colors} onChange={setColors} />
     </StyledApp>
   );
