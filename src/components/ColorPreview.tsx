@@ -21,6 +21,22 @@ const StyledColorPreview = styled.div<StyledColorPreviewProps>`
   font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
   color: ${({ $dark, theme }) => ($dark ? theme.dark : theme.light)};
+
+  @media only screen and (max-width: 56rem) {
+    font-size: 2.5em;
+  }
+
+  @media only screen and (max-width: 40rem) {
+    font-size: 2em;
+  }
+
+  @media only screen and (max-width: 28rem) {
+    font-size: 1.5em;
+  }
+
+  @media only screen and (max-width: 20rem) {
+    font-size: 1em;
+  }
 `;
 
 type ColorPreviewProps = {
