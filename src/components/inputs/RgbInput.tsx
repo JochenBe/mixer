@@ -6,6 +6,7 @@ import Color from "types/Color";
 
 const min: number = 0;
 const max: number = 255;
+const shiftStep: number = 16;
 const d: number = min;
 
 type RgbInputProps = {
@@ -18,6 +19,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
     <NumberInput
       min={min}
       max={max}
+      shiftStep={shiftStep}
       default={d}
       value={value.red}
       onChange={(red) => {
@@ -30,6 +32,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
     <NumberInput
       min={min}
       max={max}
+      shiftStep={shiftStep}
       default={d}
       value={value.green}
       onChange={(green) => {
@@ -42,6 +45,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
     <NumberInput
       min={min}
       max={max}
+      shiftStep={shiftStep}
       default={d}
       value={value.blue}
       onChange={(blue) => {
