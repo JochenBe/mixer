@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-import GitHub from "images/GitHub";
+import Settings from "images/Settings";
 
-type StyledGitHubLinkProps = {
+type StyledSettingsButtonProps = {
   $isDark?: boolean | undefined;
 };
 
-const StyledGitHubLink = styled.a<StyledGitHubLinkProps>`
+const StyledSettingsButton = styled.button<StyledSettingsButtonProps>`
   position: absolute;
-  right: 32px;
+  left: 32px;
   top: 32px;
 
   width: 32px;
   height: 32px;
-  border-radius: 16px;
+  border: none;
+  border-radius: 15px;
+  background-color: transparent;
 
   cursor: pointer;
 
@@ -31,20 +33,19 @@ const StyledGitHubLink = styled.a<StyledGitHubLinkProps>`
   }
 `;
 
-type GitHubLinkProps = {
+type SettingsButtonProps = {
   isDark?: boolean | undefined;
+  onClick: () => void;
 };
 
-const GitHubLink: React.FC<GitHubLinkProps> = ({ isDark, ...props }) => (
-  <StyledGitHubLink
-    target="_blank"
-    rel="noreferrer"
-    href="https://github.com/JochenBe/mixer"
-    $isDark={isDark}
-    {...props}
-  >
-    <GitHub isDark={isDark} />
-  </StyledGitHubLink>
+const SettingsButton: React.FC<SettingsButtonProps> = ({
+  isDark,
+  onClick,
+  ...props
+}) => (
+  <StyledSettingsButton $isDark={isDark} onClick={onClick} {...props}>
+    <Settings isDark={isDark} />
+  </StyledSettingsButton>
 );
 
-export default GitHubLink;
+export default SettingsButton;
