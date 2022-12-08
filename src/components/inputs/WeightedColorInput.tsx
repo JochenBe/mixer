@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import ColorInput from "./ColorInput";
-import RgbInput from "./RgbInput";
-import HexInput from "./HexInput";
+import AdvancedColorInput from "./AdvancedColorInput";
 import WeightInput from "./WeightInput";
-import Button from "components/Button";
-import Input from "./Input";
 
 import Color from "types/Color";
 import Weighted from "types/Weighted";
@@ -23,6 +19,7 @@ const RemoveButton = styled.button`
   background-color: ${({ theme }) => theme.foreground};
 
   font-size: 1em;
+  font-family: ${({ theme }) => theme.fontMonospace};
   color: ${({ theme }) => theme.background};
 
   cursor: pointer;
@@ -51,47 +48,6 @@ const StyledWeightedColorInput = styled.div`
       opacity: 1;
     }
   }
-
-  & ${Input}, & button {
-    font-family: ${({ theme }) => theme.fontMonospace};
-  }
-
-  & input[type="number"] {
-    width: 6ch;
-  }
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  & > * {
-    flex: 1;
-  }
-`;
-
-const WeightRow = styled(Row)`
-  & > ${Button}:not(:first-child),
-  & > ${Input}:not(:first-child) {
-    margin-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  & > ${Button}:not(:last-child),
-  & > ${Input}:not(:last-child) {
-    margin-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;right
-  }
-
-  & > ${Button}:not(:first-child) {
-    border-left: none;
-  }
-
-  & > ${Button}:not(:last-child) {
-    border-right: none;
-  }
 `;
 
 type WeightedColorInputProps = {
@@ -108,38 +64,18 @@ const WeightedColorInput: React.FC<WeightedColorInputProps> = ({
 }) => (
   <StyledWeightedColorInput {...props}>
     {onRemove ? <RemoveButton onClick={onRemove}>×</RemoveButton> : null}
-    <Row>
-      <ColorInput
-        value={value}
-        onChange={(color) => {
-          onChange({ ...value, ...color });
-        }}
-      />
-    </Row>
-    <Row>
-      <RgbInput
-        value={value}
-        onChange={(color) => {
-          onChange({ ...value, ...color });
-        }}
-      />
-    </Row>
-    <Row>
-      <HexInput
-        value={value}
-        onChange={(color) => {
-          onChange({ ...value, ...color });
-        }}
-      />
-    </Row>
-    <WeightRow>
-      <WeightInput
-        value={value.weight}
-        onChange={(weight) => {
-          onChange({ ...value, weight });
-        }}
-      />
-    </WeightRow>
+    <AdvancedColorInput
+      value={value}
+      onChange={(color) => {
+        onChange({ ...value, ...color });
+      }}
+    />
+    <WeightInput
+      value={value.weight}
+      onChange={(weight) => {
+        onChange({ ...value, weight });
+      }}
+    />
   </StyledWeightedColorInput>
 );
 

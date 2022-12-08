@@ -1,6 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 
-import NumberInput from "components/inputs/NumberInput";
+import NumberInput from "./NumberInput";
 
 import Color from "types/Color";
 
@@ -9,6 +10,12 @@ const max: number = 255;
 const shiftStep: number = 16;
 const d: number = min;
 
+const StyledNumberInput = styled(NumberInput)`
+  width: 6ch;
+
+  font-family: ${({ theme }) => theme.fontMonospace};
+`;
+
 type RgbInputProps = {
   value: Color;
   onChange: (color: Color) => void;
@@ -16,7 +23,7 @@ type RgbInputProps = {
 
 const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
   <>
-    <NumberInput
+    <StyledNumberInput
       min={min}
       max={max}
       shiftStep={shiftStep}
@@ -29,7 +36,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
         });
       }}
     />
-    <NumberInput
+    <StyledNumberInput
       min={min}
       max={max}
       shiftStep={shiftStep}
@@ -42,7 +49,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
         });
       }}
     />
-    <NumberInput
+    <StyledNumberInput
       min={min}
       max={max}
       shiftStep={shiftStep}

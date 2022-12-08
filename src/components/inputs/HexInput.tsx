@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
 
 import Input from "./Input";
 
@@ -9,6 +10,10 @@ const d: Color = {
   green: 0,
   blue: 0,
 };
+
+const StyledInput = styled(Input)`
+  font-family: ${({ theme }) => theme.fontMonospace};
+`;
 
 type HexInputProps = {
   value: Color;
@@ -62,7 +67,7 @@ const HexInput: React.FC<HexInputProps> = ({
   };
 
   return (
-    <Input
+    <StyledInput
       type="text"
       placeholder="#000000"
       minLength={4}
