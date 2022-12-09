@@ -4,19 +4,13 @@ import styled from "styled-components";
 import Color, { isDark, colorToRgb, colorToHex } from "types/Color";
 import Settings, { settingsToBackgroundColor } from "types/Settings";
 
-type ColorProps = {
-  $color: Color;
-};
-
-const StyledColorPreview = styled.div<ColorProps>`
+const StyledColorPreview = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-
-  background-color: ${({ $color }) => colorToRgb($color)};
 
   font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
@@ -47,14 +41,9 @@ const Mode = styled.div<ModeProps>`
   color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
 `;
 
-const RectangleMode = styled(Mode)<ColorProps>`
+const RectangleMode = styled(Mode)`
   padding: 1em;
   border-radius: 0.5em;
-  background-color: ${({ $color }) => colorToRgb($color)};
-`;
-
-const TextMode = styled(Mode)<ColorProps>`
-  color: ${({ $color }) => colorToRgb($color)};
 `;
 
 type ColorPreviewProps = {
@@ -83,19 +72,24 @@ const ColorPreview: React.FC<ColorPreviewProps> = ({
       break;
     case "rectangle":
       preview = (
-        <RectangleMode $color={color} $isDark={!isDark(color)}>
+        <RectangleMode
+          $isDark={!isDark(color)}
+          style={{ backgroundColor: colorToRgb(color) }}
+        >
           {colorCodes}
         </RectangleMode>
       );
       break;
     case "text":
-      preview = <TextMode $color={color}>{colorCodes}</TextMode>;
+      preview = <Mode style={{ color: colorToRgb(color) }}>{colorCodes}</Mode>;
       break;
   }
 
   return (
     <StyledColorPreview
-      $color={settingsToBackgroundColor(settings, color)}
+      style={{
+        backgroundColor: colorToRgb(settingsToBackgroundColor(settings, color)),
+      }}
       {...props}
     >
       {preview}
