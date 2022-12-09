@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import Color, { isDark, colorToRgb, colorToHex } from "types/Color";
+import Settings, { settingsToBackgroundColor } from "types/Settings";
 
-type StyledColorPreviewProps = {
+type ColorProps = {
   $color: Color;
-  $isDark: boolean;
 };
 
-const StyledColorPreview = styled.div<StyledColorPreviewProps>`
+const StyledColorPreview = styled.div<ColorProps>`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,6 @@ const StyledColorPreview = styled.div<StyledColorPreviewProps>`
 
   font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
-  color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
 
   @media only screen and (max-width: 56rem) {
     font-size: 2.5em;
@@ -39,15 +38,69 @@ const StyledColorPreview = styled.div<StyledColorPreviewProps>`
   }
 `;
 
-type ColorPreviewProps = {
-  color: Color;
+type ModeProps = {
+  $isDark?: boolean | undefined;
 };
 
-const ColorPreview: React.FC<ColorPreviewProps> = ({ color, ...props }) => (
-  <StyledColorPreview $color={color} $isDark={!isDark(color)} {...props}>
-    <p>{colorToHex(color)}</p>
-    <p>{colorToRgb(color)}</p>
-  </StyledColorPreview>
-);
+const Mode = styled.div<ModeProps>`
+  text-align: center;
+  color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
+`;
+
+const RectangleMode = styled(Mode)<ColorProps>`
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: ${({ $color }) => colorToRgb($color)};
+`;
+
+const TextMode = styled(Mode)<ColorProps>`
+  color: ${({ $color }) => colorToRgb($color)};
+`;
+
+type ColorPreviewProps = {
+  color: Color;
+  settings: Settings;
+};
+
+const ColorPreview: React.FC<ColorPreviewProps> = ({
+  color,
+  settings,
+  ...props
+}) => {
+  const colorCodes = (
+    <>
+      <p>{colorToHex(color)}</p>
+      <p>{colorToRgb(color)}</p>
+    </>
+  );
+
+  let preview: JSX.Element = <></>;
+  switch (settings.previewMode) {
+    case "color":
+      preview = (
+        <Mode $isDark={!isDark(settings.backgroundColor)}>{colorCodes}</Mode>
+      );
+      break;
+    case "rectangle":
+      preview = (
+        <RectangleMode $color={color} $isDark={!isDark(color)}>
+          {colorCodes}
+        </RectangleMode>
+      );
+      break;
+    case "text":
+      preview = <TextMode $color={color}>{colorCodes}</TextMode>;
+      break;
+  }
+
+  return (
+    <StyledColorPreview
+      $color={settingsToBackgroundColor(settings, color)}
+      {...props}
+    >
+      {preview}
+    </StyledColorPreview>
+  );
+};
 
 export default ColorPreview;

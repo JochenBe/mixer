@@ -37,6 +37,10 @@ const Input = styled.input<InputProps>`
   &::placeholder {
     color: ${({ theme }) => theme.foregroundSecondary};
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 export default Input;

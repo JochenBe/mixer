@@ -19,9 +19,10 @@ const StyledNumberInput = styled(NumberInput)`
 type RgbInputProps = {
   value: Color;
   onChange: (color: Color) => void;
+  disabled?: boolean | undefined;
 };
 
-const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
+const RgbInput: React.FC<RgbInputProps> = ({ value, onChange, disabled }) => (
   <>
     <StyledNumberInput
       min={min}
@@ -35,6 +36,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
           red,
         });
       }}
+      disabled={disabled}
     />
     <StyledNumberInput
       min={min}
@@ -48,6 +50,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
           green,
         });
       }}
+      disabled={disabled}
     />
     <StyledNumberInput
       min={min}
@@ -61,6 +64,7 @@ const RgbInput: React.FC<RgbInputProps> = ({ value, onChange }) => (
           blue,
         });
       }}
+      disabled={disabled}
     />
   </>
 );

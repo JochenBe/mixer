@@ -14,8 +14,6 @@ const StyledColorInput = styled.input`
 
   overflow: hidden;
 
-  cursor: pointer;
-
   &::-webkit-color-swatch-wrapper {
     padding: 0;
   }
@@ -32,16 +30,30 @@ const StyledColorInput = styled.input`
     outline: none;
     box-shadow: 0 0 0 0.125em ${({ theme }) => theme.foregroundSecondary};
   }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:disabled::-webkit-color-swatch {
+    opacity: 0.5;
+  }
+
+  &:disabled::-moz-color-swatch {
+    opacity: 0.5;
+  }
 `;
 
 type ColorInputProps = {
   value: Color;
   onChange: (color: Color) => void;
+  disabled?: boolean | undefined;
 };
 
 const ColorInput: React.FC<ColorInputProps> = ({
   value,
   onChange,
+  disabled,
   ...props
 }) => (
   <StyledColorInput
@@ -50,6 +62,7 @@ const ColorInput: React.FC<ColorInputProps> = ({
     onChange={(event) => {
       onChange(hexToColor(event.target.value)!);
     }}
+    disabled={disabled}
     {...props}
   />
 );

@@ -19,6 +19,7 @@ const Row = styled.div`
 type AdvancedColorInputProps = {
   value: Color;
   onChange: (color: Color) => void;
+  disabled?: boolean | undefined;
 };
 
 const AdvancedColorInput: React.FC<AdvancedColorInputProps> = (props) => (

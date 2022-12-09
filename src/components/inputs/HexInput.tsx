@@ -18,11 +18,13 @@ const StyledInput = styled(Input)`
 type HexInputProps = {
   value: Color;
   onChange: (color: Color) => void;
+  disabled?: boolean | undefined;
 };
 
 const HexInput: React.FC<HexInputProps> = ({
   value: v,
   onChange: oc,
+  disabled,
   ...props
 }) => {
   const [invalid, setInvalid] = useState<boolean>(false);
@@ -74,6 +76,7 @@ const HexInput: React.FC<HexInputProps> = ({
       maxLength={7}
       pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
       value={value}
+      disabled={disabled}
       onChange={handleChange}
       $invalid={invalid}
       {...props}

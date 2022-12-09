@@ -10,6 +10,7 @@ type NumberInputProps = {
   default?: number | undefined;
   value: number;
   onChange: (number: number) => void;
+  disabled?: boolean | undefined;
 };
 
 const NumberInput: React.FC<NumberInputProps> = ({
@@ -20,6 +21,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
   default: d,
   value: v,
   onChange: oc,
+  disabled,
   ...props
 }) => {
   const [invalid, setInvalid] = useState<boolean>(false);
@@ -97,6 +99,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
       step={1}
       pattern="\d*"
       value={value}
+      disabled={disabled}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       $invalid={invalid}
