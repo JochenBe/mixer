@@ -19,20 +19,20 @@ const SettingsInput: React.FC<SettingsInputProps> = ({
   value,
   onChange,
 }) => {
-  const [showSettings, setShowSettings] = useState<boolean>(false);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   return (
     <>
       <SettingsButton
         isDark={isDark}
         onClick={() => {
-          setShowSettings(true);
+          setShowDialog(true);
         }}
       />
-      {showSettings ? (
+      {showDialog ? (
         <Dialog
           onClose={() => {
-            setShowSettings(false);
+            setShowDialog(false);
           }}
         >
           <Heading1>Preview Mode</Heading1>

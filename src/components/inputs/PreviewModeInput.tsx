@@ -49,8 +49,9 @@ type PreviewModeInputProps = {
 const PreviewModeInput: React.FC<PreviewModeInputProps> = ({
   value,
   onChange,
+  ...props
 }) => (
-  <Row>
+  <Row {...props}>
     <Button
       $selected={value === "color"}
       onClick={() => {

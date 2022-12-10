@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import SettingsInput from "components/inputs/SettingsInput";
 import GitHubLink from "components/GitHubLink";
+import MergeInput from "components/inputs/MergeInput";
 import ColorPreview from "components/ColorPreview";
 import WeightedColors from "components/WeightedColors";
 
@@ -31,11 +32,17 @@ const App: React.FC = () => {
   const weightedColor = calculateWeightedColor(colors);
   const dark = isDark(settingsToBackgroundColor(settings, weightedColor));
 
+  const handleMerge = () => {
+    setColors([{ ...weightedColor, weight: 1 }]);
+  };
+
   return (
     <StyledApp>
-      <SettingsInput isDark={dark} value={settings} onChange={setSettings} />
-      <GitHubLink isDark={dark} />
-      <ColorPreview color={weightedColor} settings={settings} />
+      <ColorPreview color={weightedColor} settings={settings}>
+        <SettingsInput isDark={dark} value={settings} onChange={setSettings} />
+        <GitHubLink isDark={dark} />
+        {colors.length > 1 ? <MergeInput onMerge={handleMerge} /> : null}
+      </ColorPreview>
       <WeightedColors value={colors} onChange={setColors} />
     </StyledApp>
   );

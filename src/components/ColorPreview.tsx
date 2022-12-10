@@ -5,15 +5,25 @@ import Color, { isDark, colorToRgb, colorToHex } from "types/Color";
 import Settings, { settingsToBackgroundColor } from "types/Settings";
 
 const StyledColorPreview = styled.div`
+  position: relative;
+
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
+`;
 
+type ModeProps = {
+  $isDark?: boolean | undefined;
+};
+
+const Mode = styled.div<ModeProps>`
+  text-align: center;
   font-size: 3em;
   font-family: ${({ theme }) => theme.fontMonospace};
+  color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
 
   @media only screen and (max-width: 56rem) {
     font-size: 2.5em;
@@ -32,15 +42,6 @@ const StyledColorPreview = styled.div`
   }
 `;
 
-type ModeProps = {
-  $isDark?: boolean | undefined;
-};
-
-const Mode = styled.div<ModeProps>`
-  text-align: center;
-  color: ${({ $isDark, theme }) => ($isDark ? theme.dark : theme.light)};
-`;
-
 const RectangleMode = styled(Mode)`
   padding: 1em;
   width: 22ch;
@@ -52,9 +53,10 @@ type ColorPreviewProps = {
   settings: Settings;
 };
 
-const ColorPreview: React.FC<ColorPreviewProps> = ({
+const ColorPreview: React.FC<React.PropsWithChildren<ColorPreviewProps>> = ({
   color,
   settings,
+  children,
   ...props
 }) => {
   const colorCodes = (
@@ -92,6 +94,7 @@ const ColorPreview: React.FC<ColorPreviewProps> = ({
       {...props}
     >
       {preview}
+      {children}
     </StyledColorPreview>
   );
 };

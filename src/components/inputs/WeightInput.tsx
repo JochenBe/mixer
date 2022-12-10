@@ -50,7 +50,11 @@ type WeightInputProps = {
   onChange: (weight: number) => void;
 };
 
-const WeightInput: React.FC<WeightInputProps> = ({ value, onChange }) => {
+const WeightInput: React.FC<WeightInputProps> = ({
+  value,
+  onChange,
+  ...props
+}) => {
   useEffect(() => {
     if (value >= 0 && value <= 255 && value % 1 === 0) return;
 
@@ -58,7 +62,7 @@ const WeightInput: React.FC<WeightInputProps> = ({ value, onChange }) => {
   }, [value, onChange]);
 
   return (
-    <StyledWeightInput>
+    <StyledWeightInput {...props}>
       <Button
         onClick={() => {
           onChange((value + 1) / 2 - 1);

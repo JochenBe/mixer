@@ -40,10 +40,9 @@ type SettingsButtonProps = {
 
 const SettingsButton: React.FC<SettingsButtonProps> = ({
   isDark,
-  onClick,
   ...props
 }) => (
-  <StyledSettingsButton $isDark={isDark} onClick={onClick} {...props}>
+  <StyledSettingsButton $isDark={isDark} {...props}>
     <Settings isDark={isDark} />
   </StyledSettingsButton>
 );

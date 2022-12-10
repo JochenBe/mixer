@@ -64,6 +64,7 @@ type DialogProps = {
 const Dialog: React.FC<React.PropsWithChildren<DialogProps>> = ({
   onClose,
   children,
+  ...props
 }) => {
   useEffect(() => {
     if (!onClose) return;
@@ -85,6 +86,7 @@ const Dialog: React.FC<React.PropsWithChildren<DialogProps>> = ({
         onClick={(event) => {
           event.stopPropagation();
         }}
+        {...props}
       >
         {onClose ? <CloseButton onClick={onClose}>×</CloseButton> : null}
         {children}
