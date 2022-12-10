@@ -43,6 +43,7 @@ const Mode = styled.div<ModeProps>`
 
 const RectangleMode = styled(Mode)`
   padding: 1em;
+  width: 22ch;
   border-radius: 0.5em;
 `;
 
@@ -66,9 +67,7 @@ const ColorPreview: React.FC<ColorPreviewProps> = ({
   let preview: JSX.Element = <></>;
   switch (settings.previewMode) {
     case "color":
-      preview = (
-        <Mode $isDark={!isDark(settings.backgroundColor)}>{colorCodes}</Mode>
-      );
+      preview = <Mode $isDark={!isDark(color)}>{colorCodes}</Mode>;
       break;
     case "rectangle":
       preview = (
